@@ -15,7 +15,6 @@ local ipairs = ipairs
 local lower = string.lower
 local next = next
 local securecall = securecall
-local select = select
 local tinsert = table.insert
 
 local PROFESSIONS_COOKING = PROFESSIONS_COOKING
@@ -103,7 +102,7 @@ function PR:ProfessionOpen(prof)
   local skillLine, name = self:GetProfessionInfo(prof)
 
   if TXUI.IsRetail then
-    if select(6, C_TradeSkillUI.GetTradeSkillLine()) == skillLine then
+    if C_TradeSkillUI.GetBaseProfessionInfo().professionID == skillLine then
       C_TradeSkillUI.CloseTradeSkill()
     else
       C_TradeSkillUI.OpenTradeSkill(skillLine)
